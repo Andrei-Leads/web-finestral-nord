@@ -1,0 +1,120 @@
+@import "tailwindcss";
+@import "@andrei-leads/core/styles.css";
+
+/* Tokens del diseño «Exposición» (carpinteria-metalica-2), Specs §1.
+   Solo --color-primario se sobrescribe desde site.config (layout.tsx). */
+@theme {
+  --color-primario: #8a2c32; /* marca.colorPrimario */
+  --color-sobre-primario: #ffffff;
+  --color-primario-tinte: color-mix(in oklab, var(--color-primario) 8%, var(--color-papel));
+  --color-grafito: #2f3437;
+  --color-sobre-grafito-suave: #d6d2cb;
+  --color-papel: #f5f3ef;
+  --color-piedra: #ebe7e0;
+  --color-tarjeta: #ffffff;
+  --color-tinta: #1c1b19;
+  --color-tinta-suave: #4f4b45;
+  --color-linea: #d9d4cb; /* decorativo */
+  --color-laton: #a07a3c; /* solo acento no textual: filetes, iconos, checks, estrellas */
+  --color-etiqueta-ejemplo: rgb(28 27 25 / 0.82);
+  --color-foco: #1c1b19; /* bloques grafito: [--color-foco:#fff] */
+
+  --font-sans: var(--font-jakarta), system-ui, sans-serif;
+
+  --radius-boton: 10px;
+  --radius-foto: 10px;
+  --radius-tarjeta: 14px;
+  --radius-pastilla: 999px;
+
+  --shadow-tarjeta: 0 1px 2px rgb(28 27 25 / 0.06);
+  --shadow-tarjeta-hover: 0 8px 20px rgb(28 27 25 / 0.1); /* + zoom de foto scale-[1.03] 250 ms, solo md: */
+  --shadow-barra: 0 -6px 18px rgb(28 27 25 / 0.08);
+
+  --container-contenido: 1200px;
+  --container-lectura: 68ch; /* legales y contenido de servicio */
+
+  --animate-acordeon-abrir: acordeon-abrir 0.18s ease-out;
+  --animate-acordeon-cerrar: acordeon-cerrar 0.18s ease-out;
+
+  @keyframes acordeon-abrir {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+  @keyframes acordeon-cerrar {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+}
+
+/* Ancho de contenido: 1200 px + 16/24 px de margen lateral. */
+@utility contenedor {
+  max-width: calc(var(--container-contenido) + 48px);
+  margin-inline: auto;
+  padding-inline: 16px;
+  @media (min-width: 48rem) {
+    padding-inline: 24px;
+  }
+}
+
+/* Bloques sobre grafito (Visítanos, CTA final, pie, barra): anillo de foco blanco. */
+@utility sobre-grafito {
+  --color-foco: #ffffff;
+  background-color: var(--color-grafito);
+  color: #ffffff;
+}
+
+@layer base {
+  html {
+    /* Las anclas no quedan tapadas por la cabecera fija (64 px). */
+    scroll-padding-top: 5rem;
+  }
+  /* En móvil, la barra inferior tampoco tapa lo que recibe el foco. */
+  @media (max-width: 47.99rem) {
+    html {
+      scroll-padding-bottom: 5rem;
+    }
+  }
+  body {
+    background-color: var(--color-papel);
+    color: var(--color-tinta);
+    font-size: 16px;
+    line-height: 1.55;
+  }
+  @media (min-width: 48rem) {
+    body {
+      font-size: 17px;
+    }
+  }
+  /* Specs §8: un solo anillo, 3 px separado 2 px, por fuera del elemento. */
+  :focus-visible {
+    outline: 3px solid var(--color-foco);
+    outline-offset: 2px;
+  }
+  /* Títulos que reciben el foco por programa (paso del asistente). */
+  [tabindex="-1"]:focus-visible {
+    outline-offset: 4px;
+  }
+}
+
+/* Sin animaciones ni scroll suave si el usuario lo pide. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
