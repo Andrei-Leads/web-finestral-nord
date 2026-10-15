@@ -462,6 +462,6 @@ export default defineSiteConfig({
   seo: {
     titulo: "Exposición de ventanas en Paterna | Finestral Nord",
     descripcion: "Exposición de ventanas de aluminio y PVC, cerramientos, toldos y mamparas en Paterna. Ven a verlos montados. Medimos e instalamos.",
-    url: "web-finestral-nord-ao17hmcql-dreis-projects-2e32091e.vercel.app",
+    url: "https://web-finestral-nord.vercel.app",
   },
 });
