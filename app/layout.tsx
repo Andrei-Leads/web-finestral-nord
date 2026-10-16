@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
-import { crearMetadatos, DatosEstructurados } from "@andrei-leads/core";
+import { Analitica, crearMetadatos, DatosEstructurados } from "@andrei-leads/core";
 import "./globals.css";
 import config from "@/site.config";
 import { menu } from "@/lib/navegacion";
@@ -29,6 +29,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       {/* Columna a pantalla completa: la barra móvil (sticky, último hijo) queda siempre al final. */}
       <body className="flex min-h-dvh flex-col font-sans">
         <DatosEstructurados config={config} />
+        <Analitica config={config} />
         <Cabecera
           nombre={config.negocio.nombre}
           logo={config.negocio.logo}
