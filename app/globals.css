@@ -32,26 +32,6 @@
 
   --container-contenido: 1200px;
   --container-lectura: 68ch; /* legales y contenido de servicio */
-
-  --animate-acordeon-abrir: acordeon-abrir 0.18s ease-out;
-  --animate-acordeon-cerrar: acordeon-cerrar 0.18s ease-out;
-
-  @keyframes acordeon-abrir {
-    from {
-      height: 0;
-    }
-    to {
-      height: var(--radix-accordion-content-height);
-    }
-  }
-  @keyframes acordeon-cerrar {
-    from {
-      height: var(--radix-accordion-content-height);
-    }
-    to {
-      height: 0;
-    }
-  }
 }
 
 /* Ancho de contenido: 1200 px + 16/24 px de margen lateral. */

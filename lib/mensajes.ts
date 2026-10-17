@@ -2,6 +2,9 @@ import type { SiteConfig, Servicio, Trabajo } from "@andrei-leads/core";
 
 export const MENSAJE_GENERICO = "Hola, os escribo desde vuestra web.";
 
+/** Página 404 (app/not-found.tsx). */
+export const MENSAJE_NO_ENCONTRADA = "Hola, buscaba una página en vuestra web y no la encontré.";
+
 /** Inicio, cabecera, barra móvil y contacto. */
 export function mensajeGeneral(contacto: Pick<SiteConfig["contacto"], "mensajeWhatsapp">): string {
   return contacto.mensajeWhatsapp ?? MENSAJE_GENERICO;

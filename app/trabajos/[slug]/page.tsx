@@ -17,6 +17,11 @@ import { h1Interior, h2, seccion } from "@/lib/estilos";
 import { mensajeTrabajo } from "@/lib/mensajes";
 
 // Con `cacheComponents` la lista no puede ser []: sin trabajos, un slug de relleno que acaba en 404.
+// Un slug que no está en generateStaticParams se genera en la primera visita. Sin esto,
+// partialPrefetching sirve antes el App Shell con 200 y el 404 solo llega a la segunda.
+// Con "navigation", Next espera al resultado completo: 404 desde la primera petición.
+export const ensureStatic = "navigation";
+
 export function generateStaticParams() {
   const params = config.trabajos.map((t) => ({ slug: t.slug }));
   return params.length > 0 ? params : [{ slug: "_" }];

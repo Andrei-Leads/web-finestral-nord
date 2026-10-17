@@ -1,10 +1,10 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, type ReactNode } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BotonLlamada, type SiteConfig } from "@andrei-leads/core";
-import { ArrowRight, Menu, Navigation, Phone } from "lucide-react";
+import type { SiteConfig } from "@andrei-leads/core";
+import { ArrowRight, Menu, Navigation } from "lucide-react";
 
 import { buttonVariants } from "@/components/ui/button";
 import {
@@ -14,7 +14,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { telefonoVisible, type Ancla } from "@/lib/formato";
+import type { Ancla } from "@/lib/formato";
 import { urlComoLlegar } from "@/lib/llegar";
 
 /** "page" si es la ruta exacta, "true" si estamos dentro de la sección (p. ej. /servicios/x). */
@@ -45,10 +45,16 @@ export function NavEscritorio({ items }: { items: Ancla[] }) {
 type Props = {
   items: Ancla[];
   contacto: SiteConfig["contacto"];
+  /**
+   * El `BotonLlamada` del panel, ya renderizado por el servidor (Cabecera). Este archivo es
+   * "use client": si importara un valor de `@andrei-leads/core` (o de `lib/formato`, que lo
+   * importa), arrastraría zod y el contrato entero al JavaScript de todas las páginas.
+   */
+  llamada: ReactNode;
 };
 
 /** Menú móvil (hasta 1023 px): botón + panel derecho con enlaces, «Cómo llegar» y «Llamar». */
-export function MenuMovil({ items, contacto }: Props) {
+export function MenuMovil({ items, contacto, llamada }: Props) {
   const pathname = usePathname();
   const [abierto, setAbierto] = useState(false);
   // Si el panel se cierra al navegar, el foco no debe volver al botón del menú.
@@ -106,13 +112,7 @@ export function MenuMovil({ items, contacto }: Props) {
             <Navigation aria-hidden="true" strokeWidth={1.75} className="size-5 flex-none" />
             Cómo llegar
           </a>
-          <BotonLlamada
-            telefono={contacto.telefono}
-            className={buttonVariants({ variant: "llamadaContorno" })}
-          >
-            <Phone aria-hidden="true" strokeWidth={1.75} className="size-5 flex-none" />
-            Llamar · {telefonoVisible(contacto.telefono)}
-          </BotonLlamada>
+          {llamada}
         </div>
       </SheetContent>
     </Sheet>

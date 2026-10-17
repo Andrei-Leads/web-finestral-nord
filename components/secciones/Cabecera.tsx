@@ -70,7 +70,19 @@ export function Cabecera({ nombre, logo, contacto, items }: Props) {
           <span className="hidden md:inline">{telefonoVisible(contacto.telefono)}</span>
         </BotonLlamada>
 
-        <MenuMovil items={items} contacto={contacto} />
+        <MenuMovil
+          items={items}
+          contacto={contacto}
+          llamada={
+            <BotonLlamada
+              telefono={contacto.telefono}
+              className={buttonVariants({ variant: "llamadaContorno" })}
+            >
+              <Phone aria-hidden="true" strokeWidth={1.75} className="size-5 flex-none" />
+              Llamar · {telefonoVisible(contacto.telefono)}
+            </BotonLlamada>
+          }
+        />
       </div>
     </header>
   );
