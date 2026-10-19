@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@andrei-leads/core':
-        specifier: ^0.5.0
-        version: 0.5.0(next@16.4.0(@babel/core@7.29.7)(@types/node@20.19.43)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react@19.3.0)
+        specifier: ^0.5.1
+        version: 0.5.1(next@16.4.0(@babel/core@7.29.7)(@types/node@20.19.43)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react@19.3.0)
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -67,8 +67,8 @@ packages:
     resolution: {integrity: sha512-U4+70Pc5ZS9osnCBCE5Jha/ciHM+Yp+CNMNC/7HvYbNRk1Ldd+f7qO65W5qfhu/TCv+/ozljlXXe9Nj8419DMA==}
     engines: {node: '>=10'}
 
-  '@andrei-leads/core@0.5.0':
-    resolution: {integrity: sha512-36uzhzKMelJFj/RKRY446evFYH7z1PU5F/xahTN16qalhqDZmYa0iuoX8ZWU8plQ3m8L8g5O2i07nvcGaE5aWA==, tarball: https://npm.pkg.github.com/download/@andrei-leads/core/0.5.0/da8824c4d6239aae589e665d3449af6c0cabcac9}
+  '@andrei-leads/core@0.5.1':
+    resolution: {integrity: sha512-obb8ZcgSZo4j56voZ4PJFpRLMhS2aI+wf01RI/No1s8T21tHyX8Z436lpIT9lECw48O3KxddFCosx/JY1obPjg==, tarball: https://npm.pkg.github.com/download/@andrei-leads/core/0.5.1/78c95857c9179043adba8bf959cbf7147a65466a}
     peerDependencies:
       react: ^19.0.0
 
@@ -2820,7 +2820,7 @@ snapshots:
 
   '@alloc/quick-lru@5.3.0': {}
 
-  '@andrei-leads/core@0.5.0(next@16.4.0(@babel/core@7.29.7)(@types/node@20.19.43)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react@19.3.0)':
+  '@andrei-leads/core@0.5.1(next@16.4.0(@babel/core@7.29.7)(@types/node@20.19.43)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react@19.3.0)':
     dependencies:
       '@vercel/analytics': 2.0.1(next@16.4.0(@babel/core@7.29.7)(@types/node@20.19.43)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react@19.3.0)
       react: 19.3.0
